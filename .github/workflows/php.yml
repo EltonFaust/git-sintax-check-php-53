@@ -21,4 +21,5 @@ jobs:
 
     - name: php check syntax
       run: |
-        find . -iname '*.php' -exec php -l '{}' \;
+        SYNTAX_RESPONSE=$(find . -iname '*.php' -exec php -l '{}' \; | grep '^No syntax errors' -v  | sed  -Ez '$ s/\n+$//')
+        if [[ $SYNTAX_RESPONSE != "" ]]; then echo $SYNTAX_RESPONSE && exit 1; fi
