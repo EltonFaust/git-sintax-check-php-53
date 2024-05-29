@@ -1,0 +1,10 @@
+vendor/
+node_modules/
+.settings/
+composer.phar
+.buildpath
+.project
+.phpintel
+env.php
+assets-constant.txt
+maintenance-site-news
