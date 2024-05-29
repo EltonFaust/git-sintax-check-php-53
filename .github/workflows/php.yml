@@ -21,4 +21,4 @@ jobs:
 
     - name: php check syntax
       run: |
-        find . -iname '*.php' -exec php -l '{}' \; | grep '^No syntax errors' -v  | less
+        find . -iname '*.php' -exec php -l '{}' \;
