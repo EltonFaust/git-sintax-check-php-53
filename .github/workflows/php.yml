@@ -1,4 +1,4 @@
-name: PHP Syntax
+name: PHP Syntax Check
 
 on: [push]
 
@@ -21,5 +21,4 @@ jobs:
 
     - name: php check syntax
       run: |
-        SYNTAX_RESPONSE=$(find . -iname '*.php' -exec php -l '{}' \; | grep '^No syntax errors' -v  | sed  -Ez '$ s/\n+$//')
-        if [[ $SYNTAX_RESPONSE != "" ]]; then echo $SYNTAX_RESPONSE && exit 1; fi
+        if [[ $(find . -iname '*.php' -exec php -l '{}' \; | grep '^No syntax errors' -v  | sed  -Ez '$ s/\n+$//') != "" ]]; then exit 1; fi
